@@ -44,3 +44,16 @@ def post_create(request):
             'forms': forms,
         }
         return render(request, 'post/post_create.html', context=context)
+
+
+def post_delete(request, post_pk):
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_pk)
+        post.delete()
+        return redirect('post:post_list')
+    else:
+        post = Post.objects.get(id=post_pk)
+        context = {
+            'post': post,
+        }
+        return render(request, 'post/post_delete.html', context=context)

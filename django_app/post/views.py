@@ -9,8 +9,12 @@ def post_list(request):
     context = {
         'posts': posts,
     }
-    return render(request, 'post/post_list.html',context=context)
+    return render(request, 'post/post_list.html', context=context)
 
 
 def post_detail(request, post_pk):
-    return HttpResponse('Post Detail')
+    post = Post.objects.get(pk=post_pk)
+    context = {
+        'post': post,
+    }
+    return render(request, 'post/post_detail.html', context=context)

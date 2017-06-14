@@ -7,7 +7,7 @@ class Post(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to='post')
     created_date = models.DateTimeField(
         auto_now_add=True
     )

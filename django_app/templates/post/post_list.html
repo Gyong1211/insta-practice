@@ -1,0 +1,19 @@
+{% extends 'common/post_base.html' %}
+
+{% block content %}
+<div class="post-container">
+    {% for post in posts %}
+    <img src="{{ post.photo.url }}" alt="">
+    <p>{{ post.author }}</p>
+    <p>좋아요 {{ post.postlike_set.count }}개</p>
+    <p>댓글목록</p>
+    {% for comment in post.comment_set.all %}
+    <div>
+        <span>{{comment.author}} :</span>
+        <span>{{comment.content}}</span>
+    </div>
+    {%endfor%}
+
+    {% endfor %}
+</div>
+{% endblock %}
